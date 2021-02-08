@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Claire Filipek Title
-image: /img/img_1808.jpg
+image: /img/me.jpg
 heading: The world brought to your doorstep
 subheading: subheading
 mainpitch:
