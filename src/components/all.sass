@@ -1,4 +1,7 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap');
 
 // Config vars
 $brand-black: #000
@@ -8,6 +11,8 @@ $primary: $brand-black
 $primary-invert: $brand-black-invert
 $body-color: #333
 $black: #2b2523
+
+$background-color-tan: #F9F7E4
 
 .navbar .navbar-menu
   box-shadow:none !important
@@ -166,3 +171,61 @@ a.navbar-item
 
 .has-background-black
   background-color: #000000 !important
+
+
+// home header
+
+.home-header 
+  position: relative
+  background-color: $background-color-tan
+  padding: 35px 30px
+  margin: 0
+  padding-bottom: 125px
+
+  @media (min-width: 768px) 
+      padding: 35px 60px
+      padding-bottom: 125px
+    
+  @media (min-width: 1024px) 
+      padding: 35px 122px
+      padding-bottom: 125px
+    
+  @media (min-width: 1200px) 
+      padding: 35px 200px
+      padding-bottom: 125px
+      
+  &__inner
+    max-width: 1344px
+    margin: 0 auto
+
+  &__title
+    font-family: 'Domine', serif
+    font-size: 24px
+    text-align: center
+    font-weight: 600
+    margin: 60px 0
+
+    @media (min-width: 768px) 
+      font-size: 42px
+      text-align: left
+
+    @media (min-width: 1024px) 
+       font-size: 56px
+  
+  &__accent 
+      text-decoration-line: underline
+      text-decoration-style: wavy
+      cursor: pointer
+
+      &:hover 
+        text-decoration-line: underline
+        text-decoration-style: double
+
+  &__accent-color 
+    color: #0500FF
+  
+  &__image 
+    position: absolute
+    top: 0
+    right: 0
+    width: 25%

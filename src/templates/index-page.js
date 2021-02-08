@@ -6,9 +6,16 @@ import Layout from '../components/Layout';
 import PhotoGrid from '../components/PhotoGrid';
 import BlogItem from '../components/BlogItem';
 
+const headerImg = document.querySelector('.home-header__image');
+const headerName = document.querySelector('.header-name');
+
 export const IndexPageTemplate = ({
   image,
-  title,
+  title1,
+  title2,
+  title3,
+  title4,
+  title5,
   subtitle,
   heading,
   mainpitch,
@@ -19,47 +26,20 @@ export const IndexPageTemplate = ({
 }) => (
   <div>
     <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`
-      }}>
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column'
-        }}>
+      className="home-header">
+      <div className="home-header__inner">
         <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgba(0, 0, 0, 0.75) 0.5rem 0px 0px, rgba(0, 0, 0, 0.75) -0.5rem 0px 0px',
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em'
-          }}>
-          {title}
+          className="home-header__title">
+          {title1} <span className="home-header__accent header-name">{title2}</span>. {title3} <span className="home-header__accent-color">{title4}</span>. {title5}
         </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgba(0, 0, 0, 0.75) 0.5rem 0px 0px, rgba(0, 0, 0, 0.75) -0.5rem 0px 0px',
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em'
-          }}>
+        <h5
+          className="home-header__subtitile"
+          >
           {subtitle}
-        </h3>
+        </h5>
+      </div>
+      <div className="home-header__icons">
+      <img className="home-header__image" src={bigimage.image.publicURL} alt={bigimage.alt} />
       </div>
     </div>
 
@@ -78,7 +58,7 @@ export const IndexPageTemplate = ({
                 <section className="section">
                   <div className="container has-text-centered">
                     <div className="block">
-                      <img src={bigimage.image.publicURL} alt={bigimage.alt} />
+                      {/* <img className="header-img" src={bigimage.image.publicURL} alt={bigimage.alt} /> */}
                     </div>
                     
                     <PhotoGrid gridItems={intro.blurbs} />
@@ -114,7 +94,11 @@ export const IndexPageTemplate = ({
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
+  title1: PropTypes.string,
+  title2: PropTypes.string,
+  title3: PropTypes.string,
+  title4: PropTypes.string,
+  title5: PropTypes.string,
   subtitle: PropTypes.string,
   heading: PropTypes.string,
   mainpitch: PropTypes.object,
@@ -128,12 +112,38 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  console.log(headerImg)
+  if(headerImg !== null) {
+    headerImg.style.display = 'none'
+  }
+
+  if(headerName !== null){
+    headerName.addEventListener("mouseover", function( event ) {   
+    headerImg.style.display = 'block'
+    }, false);
+
+    headerName.addEventListener("mouseleave", function( event ) {   
+    headerImg.style.display = 'none'
+    }, false);
+
+    headerImg.addEventListener("mouseover", function( event ) {   
+    headerImg.style.display = 'block'
+    }, false);
+
+    headerImg.addEventListener("mouseleave", function( event ) {   
+    headerImg.style.display = 'none'
+    }, false);
+  }
 
   return (
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
-        title={frontmatter.title}
+        title1={frontmatter.title1}
+        title2={frontmatter.title2}
+        title3={frontmatter.title3}
+        title4={frontmatter.title4}
+        title5={frontmatter.title5}
         subtitle={frontmatter.subtitle}
         heading={frontmatter.heading}
         mainpitch={frontmatter.mainpitch}
@@ -163,7 +173,11 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
+        title1
+        title2
+        title3
+        title4
+        title5
         subtitle
         image {
           childImageSharp {
