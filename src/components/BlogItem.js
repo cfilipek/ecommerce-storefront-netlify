@@ -6,7 +6,6 @@ class BlogItem extends React.Component {
   render() {
     const post = this.props.post;
     const columnWidth = this.props.columnWidth ? this.props.columnWidth : 'is-6';
-
     return (
       <div className={`is-parent column ${columnWidth}`} key={post.id}>
         <article

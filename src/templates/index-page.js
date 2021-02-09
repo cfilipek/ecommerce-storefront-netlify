@@ -6,9 +6,6 @@ import Layout from '../components/Layout';
 import PhotoGrid from '../components/PhotoGrid';
 import BlogItem from '../components/BlogItem';
 
-const headerImg = document.querySelector('.home-header__image');
-const headerName = document.querySelector('.header-name');
-
 export const IndexPageTemplate = ({
   image,
   title1,
@@ -23,7 +20,9 @@ export const IndexPageTemplate = ({
   description,
   intro,
   post
-}) => (
+}) => 
+{
+return(
   <div>
     <div
       className="home-header">
@@ -39,7 +38,7 @@ export const IndexPageTemplate = ({
         </h5>
       </div>
       <div className="home-header__icons">
-      <img className="home-header__image" src={bigimage.image.publicURL} alt={bigimage.alt} />
+      {/* <img className="home-header__image" src={bigimage.image.publicURL} alt={bigimage.alt} /> */}
       </div>
     </div>
 
@@ -90,7 +89,7 @@ export const IndexPageTemplate = ({
       </div>
     </section>
   </div>
-);
+);}
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -112,29 +111,7 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  console.log(headerImg)
-  if(headerImg !== null) {
-    headerImg.style.display = 'none'
-  }
-
-  if(headerName !== null){
-    headerName.addEventListener("mouseover", function( event ) {   
-    headerImg.style.display = 'block'
-    }, false);
-
-    headerName.addEventListener("mouseleave", function( event ) {   
-    headerImg.style.display = 'none'
-    }, false);
-
-    headerImg.addEventListener("mouseover", function( event ) {   
-    headerImg.style.display = 'block'
-    }, false);
-
-    headerImg.addEventListener("mouseleave", function( event ) {   
-    headerImg.style.display = 'none'
-    }, false);
-  }
-
+  console.log(data.allMarkdownRemark)
   return (
     <Layout>
       <IndexPageTemplate
