@@ -1,10 +1,10 @@
 ---
 templateKey: blog-post
-title: Shopping with the Business Cat
+title: Shopping with the Business Cats
 date: 2019-10-11T12:14:04.000Z
+description: Destroy couch leave fur on owners clothes show belly
 featuredpost: true
 featuredimage: /img/animal-business-cat.jpg
-description: Destroy couch leave fur on owners clothes show belly
 tags:
   - kitty cat
   - cosmos
